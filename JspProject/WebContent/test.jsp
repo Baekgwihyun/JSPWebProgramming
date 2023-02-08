@@ -10,5 +10,8 @@
 <%
 %>
 test push
+<center>
+<h1>가나다라</h1>
+</center>
 </body>
 </html>
