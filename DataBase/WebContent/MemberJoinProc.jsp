@@ -1,8 +1,8 @@
-<%@page import="java.sql.PreparedStatement"%>
-<%@page import="java.sql.DriverManager"%>
-<%@page import="java.sql.Driver"%>
-<%@page import="java.sql.Connection"%>
-<%@page import="javax.servlet.jsp.tagext.TryCatchFinally"%>
+<%@ page import="java.sql.Connection"%>
+<%@ page import="java.sql.DriverManager"%>
+<%@ page import="java.sql.PreparedStatement"%>
+<%@ page import="java.sql.ResultSet"%>
+<%@ page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
@@ -36,15 +36,17 @@
 %>
 <%
 	//오라클에 접속하는 소스 작성
+				 			
 	String id = "qorrnlgus95";
 	String pass= "slalwhw12";
-	String url = "jdbc:oracle:thin:@localhost:1522/MEMBER"; //접속 url
+	String url = "jdbc:oracle:thin:@localhost:1522:orcl"; //접속 url
 	
 	try{
 		//1.해당 데이터 베이스를 사용한다고 선언(클래스를 등록 = 오라클을 사용) 	
-		Class.forName ("oracle.jdbc.driver.OracleDriver");
+		Class.forName("oracle.jdbc.driver.OracleDriver");
 		//2.해당 데이터 베이스에 접속
-		Connection con = DriverManager.getConnection(url, pass, url);
+		//Connection con = DriverManager.getConnection(id, pass, url);
+		Connection con = DriverManager.getConnection(url, id, pass);
 		System.out.println("[Database 연결 성공]");
 		
 		//3. 접속후 쿼리 준비하여 쿼리를 실행하여 쿼리를 사용하도록 설정 
@@ -62,16 +64,20 @@
   		pstmt.setString(7,mbean.getAge());
   		pstmt.setString(8,mbean.getInfo());
   		
+  		//4.오라클에서 퀴리를 실행 하시오 
+   		pstmt.executeUpdate();//insert,update,delete 시 사용하는 메소드 
+  		
+  		//자원 반납
+  		con.close();
   		
   		
 	}catch(Exception e){
 			e.printStackTrace();
 			
 	}
-	// oracle 접속 완료
-	
 	
 %>
+oracle 접속 완료~
 
 
 	<h2> 당신의 아이디 = <%=mbean.getId()%></h2>
