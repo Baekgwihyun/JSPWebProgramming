@@ -1,3 +1,5 @@
+<%@page import="model.MemberDAO"%>
+<%@page import="model.MemberDAO"%>
 <%@ page import="java.sql.Connection"%>
 <%@ page import="java.sql.DriverManager"%>
 <%@ page import="java.sql.PreparedStatement"%>
@@ -35,46 +37,10 @@
 	mbean.setHobby(texthobby);//기존의 취미는 주소 번지가 저장되기에  위에 배열의 내용을 하나의 스트림으로 저장한 변수를 다시 입력 
 %>
 <%
-	//오라클에 접속하는 소스 작성
-				 			
-	String id = "qorrnlgus95";
-	String pass= "slalwhw12";
-	String url = "jdbc:oracle:thin:@localhost:1522:orcl"; //접속 url
-	
-	try{
-		//1.해당 데이터 베이스를 사용한다고 선언(클래스를 등록 = 오라클을 사용) 	
-		Class.forName("oracle.jdbc.driver.OracleDriver");
-		//2.해당 데이터 베이스에 접속
-		//Connection con = DriverManager.getConnection(id, pass, url);
-		Connection con = DriverManager.getConnection(url, id, pass);
-		System.out.println("[Database 연결 성공]");
-		
-		//3. 접속후 쿼리 준비하여 쿼리를 실행하여 쿼리를 사용하도록 설정 
-  		 String sql = "INSERT INTO MEMBER VALUES(?,?,?,?,?,?,?,?)"; 
-		// 쿼리 사용하도록 설정
-		PreparedStatement pstmt = con.prepareStatement(sql);
-  		// "?" 물음표에 맞게 데이터를 맵핑
-  		
-  		pstmt.setString(1, mbean.getId());
-  		pstmt.setString(2, mbean.getPass1());
-  		pstmt.setString(3,mbean.getEmail());
-  		pstmt.setString(4,mbean.getTel());
-  		pstmt.setString(5,mbean.getHobby());
-  		pstmt.setString(6,mbean.getJob());
-  		pstmt.setString(7,mbean.getAge());
-  		pstmt.setString(8,mbean.getInfo());
-  		
-  		//4.오라클에서 퀴리를 실행 하시오 
-   		pstmt.executeUpdate();//insert,update,delete 시 사용하는 메소드 
-  		
-  		//자원 반납
-  		con.close();
-  		
-  		
-	}catch(Exception e){
-			e.printStackTrace();
-			
-	}
+
+	//데이터베이스클래스 객체 생성
+	MemberDAO mdao = new MemberDAO();
+	mdao.insertMember(mbean);
 	
 %>
 oracle 접속 완료~
