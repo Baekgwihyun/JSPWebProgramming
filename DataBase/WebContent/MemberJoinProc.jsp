@@ -42,6 +42,11 @@
 	MemberDAO mdao = new MemberDAO();
 	mdao.insertMember(mbean);
 	
+	//회원가입이 되었다면 회원 정보를 보여주는 페이지로 이동시킴
+	response.sendRedirect("MemberList.jsp");
+	
+	
+	
 %>
 oracle 접속 완료~
 
