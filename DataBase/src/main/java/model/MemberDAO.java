@@ -145,4 +145,37 @@ public MemberBean oneSelectMember(String id){
 	 //리턴 
 	return bean;	
 }
-}
+
+	//한 회원의 패스워드값을 리턴하는 메소드 작성
+	public String getPass(String id) {
+		//스트링으로 리턴을 해야하기에 스트링 변수 선언
+		String pass="";
+		
+		try {
+			getCon();
+			//쿼리준비
+			String sql="select pass1 from member where id=?";
+			pstmt = con.prepareStatement(sql);
+			//?물음표에 값을 매핑
+			pstmt.setString(1, id);
+			//쿼리 실행
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				pass = rs.getString(1); //패스워드값이 저장된 컬럼인덱스
+			}
+			//자원반납
+			con.close();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		//결과를 리턴
+		return pass;
+	}
+
+
+	}
+
+
+
+
+
