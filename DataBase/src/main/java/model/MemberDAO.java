@@ -12,7 +12,7 @@ public class MemberDAO {
 	// 오라클에 접속하는 소스 작성
 	String id = "qorrnlgus95";
 	String pass = "slalwhw12";
-	String url = "jdbc:oracle:thin:@localhost:1522:orcl"; // 접속 url
+	String url = "jdbc:oracle:thin:@localhost:1521:orcl"; // 접속 url
 
 	Connection con; // 데이터베이스에 접근할 수 있도록 설정 멤버변수 선언
 	PreparedStatement pstmt; // 데이터베이스에서 쿼리를 실행 시켜주는 객체
