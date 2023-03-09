@@ -172,7 +172,54 @@ public MemberBean oneSelectMember(String id){
 		return pass;
 	}
 
+	//한 회원의 정보를 수정하는 메소드
+	public void updateMember(MemberBean bean){
+		getCon();
+		
+		try {
+			//쿼리 준비
+			String sql = "update member set email=?,tel=? where id=?";
+			//쿼리 실행 객체 선언
+			pstmt = con.prepareStatement(sql);
+			//? 물음표에 값을 매핑
+			pstmt.setString(1, bean.getEmail());
+			pstmt.setString(2, bean.getTel());
+			pstmt.setString(3, bean.getId());
+			
+			//쿼리실행
+			pstmt.executeUpdate();
+			//자원반납
+			con.close();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+	
 
+	// 한 회원을 삭제하는 메소드 작성
+		public void deleteMember(String id) {
+			getCon();
+			
+			try {
+				//쿼리 준비
+				String sql = "delete from member where id=?";
+				//쿼리 실행 객체 선언
+				pstmt = con.prepareStatement(sql);
+				//? 물음표에 값을 매핑
+				pstmt.setString(1, id);
+				//쿼리실행
+				pstmt.executeUpdate();
+				//자원반납
+				con.close();
+				
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+		}
+	
+	
+	
 	}
 
 

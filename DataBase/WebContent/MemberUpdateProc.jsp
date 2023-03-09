@@ -29,6 +29,10 @@
 		
 		if(mbean.getPass1().equals(pass)){//기존 패스워드와 데이터베이스 패스워드가 같다면 테이블을 수정
 			
+			//MemberDAO 클랫의 회원 수정 메소드를 호출
+			mdao.updateMember(mbean);
+			response.sendRedirect("MemberList.jsp");
+			
 		}else{	
 		%>
 			<script type="text/javascript">
