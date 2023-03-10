@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+
 	<center>
 		<table width="600" border="1">
 			<tr height="100">
