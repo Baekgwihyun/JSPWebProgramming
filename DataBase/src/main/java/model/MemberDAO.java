@@ -6,13 +6,17 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Vector;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.sql.DataSource;
+
 // 오라클 데이터 베이스를 연결하고 select, insert, update, delete작업을 실행하는 클래스
 public class MemberDAO {
 
-	// 오라클에 접속하는 소스 작성
-	String id = "qorrnlgus95";
-	String pass = "slalwhw12";
-	String url = "jdbc:oracle:thin:@localhost:1521:orcl"; // 접속 url
+//	// 오라클에 접속하는 소스 작성
+//	String id = "qorrnlgus95";
+//	String pass = "slalwhw12";
+//	String url = "jdbc:oracle:thin:@localhost:1521:orcl"; // 접속 url
 
 	Connection con; // 데이터베이스에 접근할 수 있도록 설정 멤버변수 선언
 	PreparedStatement pstmt; // 데이터베이스에서 쿼리를 실행 시켜주는 객체
@@ -21,18 +25,31 @@ public class MemberDAO {
 	// 데이터 베이스에 접근할 수 있도록 도와주는 메소드
 	public void getCon() {
 
+		//커넥션풀을 이용하여 데이터베이스 접근
 		try {
-			// 1.해당 데이터 베이스를 사용한다고 선언(클래스를 등록 = 오라클을 사용)
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			// 2.해당 데이터 베이스에 접속
-			// Connection con = DriverManager.getConnection(id, pass, url);
-			con = DriverManager.getConnection(url, id, pass);
-			System.out.println("[Database 연결 성공]");
-
+			//외부에서 데이터를 읽어드려야 하기에
+			Context initctx = new InitialContext();
+			//톰캣서버에 정보를 담아놓은 곳으로 이동
+			Context envctx = (Context) initctx.lookup("java:comp/env");
+			//데이터 소스 객체를 선언
+			DataSource ds = (DataSource) envctx.lookup("jdbc/pool");
+			//데이터 소스를 기준으로 커넥션을 연결해주시오
+			con = ds.getConnection();
+			
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-
+		
+		
+		/*
+		 * try { // 1.해당 데이터 베이스를 사용한다고 선언(클래스를 등록 = 오라클을 사용)
+		 * Class.forName("oracle.jdbc.driver.OracleDriver"); // 2.해당 데이터 베이스에 접속 //
+		 * Connection con = DriverManager.getConnection(id, pass, url); con =
+		 * DriverManager.getConnection(url, id, pass);
+		 * System.out.println("[Database 연결 성공]");
+		 * 
+		 * } catch (Exception e) { // TODO: handle exception }
+		 */
 	}
 
 	// 데이터 베이스에 한사람의 회워 정보를 저장해주즌 메소드
@@ -118,9 +135,9 @@ public MemberBean oneSelectMember(String id){
 		 getCon();
 		 
 		 //쿼리 준비 
-		 String SQL = "SELECT *FROM MEMBER WHERE id= ?";
+		 String sql = "SELECT *FROM MEMBER WHERE id= ?";
 		 //쿼리를 실행 시켜주는 객체 선언 
-		 pstmt = con.prepareStatement(SQL);		 
+		 pstmt = con.prepareStatement(sql);		 
 		 //?의 값을 맵핑 
 		 pstmt.setString(1,id);
 		 //쿼리 실행 
