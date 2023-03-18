@@ -1,0 +1,226 @@
+var loadingImg = null;
+
+function clsReq (){}
+clsReq.prototype =
+{
+	reqList : null,
+	set : function()
+	{
+		var req = document.location.href;
+		req = req.substring(req.indexOf("?")+1);
+		var arrReq = req.split("&");
+		reqList = new Array();
+
+		for(var i=0;i<arrReq.length;i++)
+		{
+			reqList[i] = arrReq[i].split("=");
+		}
+	},
+	get : function(name)
+	{
+		var rtn = "";
+		for(var i=0;i<reqList.length;i++)
+		{
+			if(reqList[i][0]==name)
+				rtn = reqList[i][1];
+		}
+		return rtn;
+	}
+}
+
+function clsCookie (){}
+clsCookie.prototype =
+{
+	set : function(name, value)
+	{
+		var argv = arguments;
+	     var argc = arguments.length;
+	     document.cookie = name + "=" + escape (value) + ";";
+	},
+
+	get : function(name){
+	 var arg = name + "=";
+	 var alen = arg.length;
+	 var clen = document.cookie.length;
+	 var i = 0;
+	 var j = 0;
+	 while(i < clen){
+	  j = i + alen;
+	  if (document.cookie.substring(i, j) == arg)
+	   return Cookies.getCookieVal(j);
+	  i = document.cookie.indexOf(" ", i) + 1;
+	  if(i == 0)
+	   break;
+	 }
+	 return "";
+	},
+
+	clear : function(name) {
+	  if(Cookies.get(name)){
+	    document.cookie = name + "=" + "; expires=Thu, 01-Jan-01 00:00:01 GMT";
+	  }
+	},
+
+	getCookieVal : function(offset){
+	   var endstr = document.cookie.indexOf(";", offset);
+	   if(endstr == -1){
+	       endstr = document.cookie.length;
+	   }
+	   return unescape(document.cookie.substring(offset, endstr));
+	}
+}
+
+function isIE()
+{
+    if(window.ActiveXObject)
+        return true;
+    else
+        return false;
+}
+
+function getNodeText(node)
+{
+    if(isIE())
+        return node[0].text;
+    else
+        return node[0].textContent;
+}
+
+function removeObj(obj,high)
+{
+	alert("test");
+	alert(obj.innerHTML);
+	obj.innerHTML = "";
+}
+
+function setComboValByTxt(obj,txt)
+{
+	if(obj!=undefined)
+	{
+	    for(var i=0;i<obj.length;i++)
+	    {
+	        if(txt.indexOf(obj[i].innerText)>-1)
+	        {
+	            obj.selectedIndex=i;
+	        }
+	    }
+    }
+}
+
+function setComboValById(obj,txt)
+{
+	if(obj!=undefined)
+	{
+	    for(var i=0;i<obj.length;i++)
+	    {
+	        if(txt==obj[i].value)
+	        {
+	            obj.selectedIndex=i;
+	        }
+	    }
+    }
+}
+
+function nowElement(obj)
+{
+    nowObj = obj;
+}
+
+
+function showLoading()
+{
+	var b;
+	if(loadingImg==null)
+	{
+		loadingImg = document.createElement("div");
+		loadingImg.id = "loading";
+		loadingImg.style.position = "absolute";
+		loadingImg.style.top = document.body.scrollTop + top.document.body.offsetHeight/3;
+		loadingImg.style.left = document.body.scrollLeft + top.document.body.offsetWidth/2;
+		b = document.createElement("img");
+		b.src = "/img/loading.gif";
+		loadingImg.appendChild(b);
+		document.body.appendChild(loadingImg);
+	}
+}
+
+function hiddenLoading()
+{
+	if(loadingImg!=null)
+		document.body.removeChild(loadingImg);
+	loadingImg = null;
+}
+
+function makeParam (agparam)
+{
+	var ret="";
+	for (var i=0;i<agparam.length;i++)
+		ret+=agparam[i][0] + "=" + agparam[i][1] + "\t";
+	return ret;
+}
+
+function PrintPageAjax(page,page_size,page_cnt,url)
+{
+	var i,n_page,page_now_num,s_page,e_page;
+	n_page=parseInt((page-1)/page_size)+1;
+	s_page=(n_page-1)*page_size+1;
+	e_page=n_page*page_size;
+	if (e_page > page_cnt)
+		e_page = page_cnt;
+	var htmTxt;
+	htmTxt="";
+
+	if(s_page>1)
+	{
+//		if(page>page_cnt)
+			htmTxt=htmTxt+("<a href=\"\#\" onclick=\"javascript:page=(" + (s_page - 1) + ");" + url + ";\"><img src=\"/img/-bu_pre_off.gif\" border=\"0\" align=\"absmiddle\" style=\"margin-bottom:2px;margin-right:4px;\"></a> ");
+//		else
+//			htmTxt=htmTxt+("<img src=\"/img/-bu_pre_off.gif\" border=\"0\" align=\"absmiddle\" style=\"margin-bottom:2px;margin-right:4px;\">");
+
+	}
+	else
+		htmTxt=htmTxt+("<img src=\"/img/-bu_pre_off.gif\" border=\"0\" align=\"absmiddle\" style=\"margin-bottom:2px;margin-right:4px;\">");
+	for(i=s_page;i<=e_page;i++)
+	{
+		if(i==page)
+			htmTxt=htmTxt+("<b> " + i + " </b>");
+		else
+			htmTxt=htmTxt+("<font size=3><a href=\"\#\" onclick=\"javascript:page=" + i + ";" + url + ";\" class=none> " + i + " </a></font>");
+	}
+
+	if(e_page<page_cnt)
+	{
+//		if( (s_page + page_size)<=page)
+			htmTxt=htmTxt+("<a href=\"\#\" onclick=\"javascript:page=" + (e_page + 1) + ";" + url + ";\"><img src=\"/img/-bu_next_off.gif\" border=\"0\" align=\"absmiddle\" style=\"margin-bottom:2px;margin-left:6px;\"></a> ");
+//		else
+//			htmTxt=htmTxt+("<img src=\"/img/-bu_next_off.gif\" border=\"0\" align=\"absmiddle\" style=\"margin-bottom:2px;margin-left:6px;\">");
+	}
+	else
+		htmTxt=htmTxt+("<img src=\"/img/-bu_next_off.gif\" border=\"0\" align=\"absmiddle\" style=\"margin-bottom:2px;margin-left:6px;\">");
+//	alert(htmTxt);
+	return htmTxt;
+
+}
+
+
+function removeObj(obj,high)
+{
+    var j=0;
+
+    for(var i=obj.parentNode.childNodes.length;i>0;i--)
+    {
+        if(obj.parentNode.childNodes[i]!=undefined)
+        {
+            if(obj.parentNode.childNodes[i].tagName=="DIV"&&obj.parentNode.childNodes[i].attributes.getNamedItem("high")!=null)
+            {
+
+                if(obj.parentNode.childNodes[i].attributes.getNamedItem("high").value.indexOf(high)>-1)
+                {
+                    obj.parentNode.removeChild(obj.parentNode.childNodes[i]);
+                    j++;
+                }
+            }
+        }
+    }
+}
+

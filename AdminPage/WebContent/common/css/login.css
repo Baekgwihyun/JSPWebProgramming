@@ -1,0 +1,57 @@
+﻿@charset "utf-8";
+/* CSS Document */
+@import "reset.css"; /* css파일 내에서 css파일 호출 */
+/*@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);*/  /* 나눔고딕 구글폰트 호출 */
+/*@import url(//cdn.rawgit.com/hiun/NanumSquare/master/nanumsquare.css);  나눔스퀘어 구글폰트 호출(큰글씨에 적용하면 예쁨) */
+
+
+
+body, div, h1, ol, li, form, fieldset, legend, input {
+  	margin:0; padding:0; border:0;font-family: '나눔고딕','Nanum Gothic', '돋움', Arial, sans-serif; 
+}
+
+/*body{font-family: '맑은고딕','Malgun Gothic', '돋움', Arial, sans-serif;  } */
+/*body{font-family: '나눔고딕','Nanum Gothic', '돋움', Arial, sans-serif;  } */
+div {}
+img { border:0px; }
+html, body {height:100%; margin:0px; padding:0px; background:#4476b6;}
+ul{list-style:none;}
+
+
+
+
+
+/* 로그인 */
+
+ 
+#login_wrap {width:100%; height:334px; border-top:1px solid #648dc2;  border-bottom:1px solid #648dc2; position:absolute; top:50%; left:0%; margin:-167px 0 0 0px; background:#4d7fbe;}  /* 원래전체높이 334=height254+상단패딩43+하단패딩37px */
+#login_wrap #login_border {height:252px;border-top:1px solid #4476b6;border-bottom:1px solid #4476b6;  padding:43px 0px 37px; } /* 2줄 디자인을 위하여 필요하다 */
+#login_wrap #login_border #login_width {margin: 0px auto; width:300px;} /* 가운데 정렬 높이 설정 */
+
+.login_logo {width:295px; height:27px; 
+  background:url(../../images/logo.png) no-repeat; 
+  text-indent:-9999px;   /* 들여쓰기 마이너스 (내어쓰기)를 해서 텍스트가 존재는 하지만 안보이게 밀어 놓는다 */
+  margin-left:2px;
+  margin-bottom:9px;   
+}
+
+.form_box{ width:300px; height:113px; position:relative; }
+.form_box .id_area {position:absolute; width:300px; height:35px; top:20px;}
+.form_box .pw_area {position:absolute; width:300px; height:35px; top:66px;}
+.form_box .save_id {position:absolute; top:110px;} 
+.form_box .auto_login {position:absolute; top:110px; left:163px;}
+.form_box .login_area {position:absolute; width:300px; height:55px; top:150px; left:0px;
+  /*  background:url(img2/btn_login.gif) no-repeat; text-indent:-9999px; */
+}
+.form_box .id_area label{ display:block; float:left;  width:34px; height:11px; text-indent:-9999px;  /*  */
+  background:url(img2/txt_mem_id.gif) no-repeat; margin:7px 26px 0 0; 
+} /*display:inline-block; */
+.form_box .id_area, .form_box .pw_area {color:#ffffff;}
+.form_box .id_area input, .form_box .pw_area input { width:290px; height:35px; border:0px solid #ddd;  background:url(../../images/login_input.png) no-repeat; color:#cad3e4; padding:0px 10px;}
+.form_box .save_id label{color:#e7edf5; font-size:12px;position:relative; top:-2px; left:0px;} /* 원래자리 확보 relative : 조금 움직일때 사용한다. */
+.form_box .auto_login label{color:#e7edf5; font-size:12px;position:relative; top:-2px; left:0px;} /* 원래자리 확보 relative : 조금 움직일때 사용한다. */
+ 
+
+.form_box .login_area input {width:300px; height:55px; border:0; background:url(../../images/login_btn.png) no-repeat; font-size:16px; color:#ffffff; }
+
+

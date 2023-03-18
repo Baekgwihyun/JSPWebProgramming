@@ -1,0 +1,271 @@
+@CHARSET "UTF-8";
+
+/* CSS Document */
+
+* { font-family:Arial, sans-serif, 돋움;color:#666;}
+
+
+
+/*  공통사항   */
+
+body { height:100% ;
+	font-size:12px; color:#666; font-family:Arial, sans-serif, 돋움; text-decoration:none; line-height:18px;
+	margin: 0px;
+	background-color:#ffffff;		
+}
+td {font-size:12px; color:#666; font-family:Arial, sans-serif, 돋움; text-decoration:none; line-height:150%;}
+th {font-size:12px; color:#666; font-family:Arial, sans-serif, 돋움; text-decoration:none; }
+p {font-size:12px; color:#666; font-family:Arial, sans-serif, 돋움; text-decoration:none; line- height:18px}
+img { border:0px }
+.contents {padding : 15px; width:1100px; vertical-align:top}
+.contents_left {padding : 15px 15px 15px 0px; width:200px; vertical-align:top; background-color:#f3f3f3;border-top-color: #ffffff;border-right-color: #c8cbd1;border-bottom-color: #ffffff;border-left-color: #ffffff;border-style:solid;border-width:1px;}
+.contents_right {padding : 15px; width:895px; vertical-align:top}
+
+
+.t_bold                     {font-weight:bold; letter-spacing: -0.1em ; font-family:돋움; }
+.t_title {font-family:돋움; color: #111b2a; font-size:16px ;font-weight:bold;padding-top : 3px;}
+
+/* 기본사항  */
+.t_white { color:#ffffff;}
+.td_white {background-color:#ffffff}
+
+.td_justify {text-align: justify}
+.td_yellow {background-color:#FFFCD7}
+
+.td_yellow2 {background-color:#FEF376}
+.td_sky {background-color:#BAD9F1}
+.td_pink {background-color:#FFC4E2}
+
+.td_gray {background-color:#FBF9E6}
+.td_gray2 {background-color:#FBF9E6}
+
+.td_underline_d6d6d6 {border-top-color: #ffffff;border-right-color: #ffffff;border-bottom-color: #d9d9d9;border-left-color: #ffffff;border-style:solid;border-width:1px;}
+.td_box_d6d6d6 {border-top-color: #d9d9d9;border-right-color: #d9d9d9;border-bottom-color: #d9d9d9;border-left-color: #d9d9d9;border-style:solid;border-width:2px;}
+.td_box_blue {border-top-color: #678cab;border-right-color: #678cab;border-bottom-color: #678cab;border-left-color: #678cab;border-style:solid;border-width:1px;}
+
+.td_pink {background-color:#e86960}
+
+
+
+
+.table_border {background-color:#c7d4e5}
+.table_border_pop {background-color:#678cab}
+
+
+/* text  */
+.t_pop_title{font-family:돋움; color: #ffffff; font-size:16px ;font-weight:bold}
+.t_boldBlack { font-weight:bold; color:#000000;}
+.t_orange { color:#FF3600;}
+.t_bbrown { color:#ab6100; height:20px;}
+.t_myinfo_lightgary {color: #929292;font-size:11px;}
+.t_myinfo_orange {color: #f86214;font-size:11px;}
+.t_myinfo_orange_b {color: #f86214;font-weight:bold;font-size:11px;}
+.text_white {color: #ffffff;}
+.text_boardtitle {font-family:돋움; color: #333333; font-size:11px ;font-weight:bold;background-color:#E9E9E9}
+.text_boardtitle2 {font-family:돋움; color: #333333; font-size:11px ;font-weight:bold;background-color:#BBC1CC}
+.text_boardtitle3 {font-family:돋움; color: #333333; font-size:11px ;font-weight:bold;background-color:#BBC1CC}
+.text_section_01 {font-family:돋움; color: #FF3600; font-size:11px ;font-weight:bold}
+.text_section_02 {font-family:돋움; color: #47B717; font-size:11px ;font-weight:bold}
+.text_section_03 {font-family:돋움; color: #F88E16; font-size:11px ;font-weight:bold}
+.text_section_04 {font-family:돋움; color: #0D6AB2; font-size:11px ;font-weight:bold}
+
+.text_pop_title{font-family:arial; color: #ffffff; font-size:22px ;font-weight:bold}
+.text_btn{font-family:Arial,돋움; color: #444444; font-size:11px ;font-weight:bold;letter-spacing: -0.05em ;}
+.text_btn2{font-family:돋움; color: #444444; font-size:11px ;padding-left:3px; padding-right:3px; padding-top:2px}
+.text_btn_logout{font-family:Arial; color: #00348c; font-size:11px ;font-weight:bold}
+
+.t_search { color:#12649d; font-family : 돋움; font-size : 18px;font-weight:bold}
+.t_blue { color:#12649d; font-family : 돋움; font-size : 11px;}
+.t_copyright { color:#203a66; font-family : 돋움; font-size : 11px;}
+.t_manual_title {font-family: "돋움"; font-size: 14px;color: #12649d;font-weight:bold; text-decoration:none}
+.11pixel{ font-size : 11px;}
+.t_11px{ font-size : 11px;}
+
+.t_bluebar_text {color: #1f4e82;font-size:11px;}
+.t_bluebar_text_b {color: #1f4e82;font-size:11px;font-weight:bold;}
+
+
+/* 패딩  */
+.padding_contents { padding-top : 10px; padding-right: 10px; padding-bottom: 10px; padding-left:10px ;vertical-algin:top;}
+.padding_contents_left { padding-top : 10px; padding-right: 5px; padding-bottom: 10px; padding-left:10px ;vertical-algin:top;}
+.padding_contents_right { padding-top : 10px; padding-right: 10px; padding-bottom: 10px; padding-left:10px ;vertical-algin:top;}
+.padding_leftmenu { padding-top : 0px; padding-right: 0px; padding-bottom: 0px; padding-left:0px ;
+                    width:200px ; vertical-align:top}
+.padding_location { padding-top : 6px; padding-right: 65px; padding-bottom: 0px; padding-left:0px ;vertical-algin: top;
+                    text-align: right; height:42px ; background-image:  url(../../images/location.gif);}
+
+.bg_title { color: #000000;height:39px ; padding-left:10px; padding-top:0px;font-weight:bold; font-size:15px;}
+
+
+#userMoveArea {
+	display: none;
+	margin: 10px 0 0 10px;
+	padding: 3px;
+	border: 1px solid #ddd;
+	width: 320px;
+	height: 180px;
+}
+.moveAreaDiv {
+	margin: 10px 0 0 5px;
+	height: 50px;
+}
+.moveAreaDivGroup {
+	margin: 10px 0 0 5px;
+}
+.moveAreaTitle {
+	font-weight: bold;
+	font-size: 12px;
+}
+#moveUsers {
+	width: 200px;
+	height: 50px;
+	overflow-y: auto;
+	position: absolute;
+	border: 1px solid #ddd;
+	margin-left: 20px;
+}
+#moveGroup {
+	width: 200px;
+	position: absolute;
+	margin-left: 30px;
+}
+#moveBtns {
+	text-align: center;
+	margin-top: 60px;
+	padding: 5px;
+	border-top: 1px solid #ddd;
+}
+#moveComment {
+	position: absolute;
+	margin-top: 30px;
+	color: #dd4545;
+}
+.button {
+	margin: 2px;
+	padding: 3px;
+	background-color: #FFFFFF;
+	border-radius: 2px;
+	border: 1px solid #D0D0D0;
+	overflow: auto;
+	text-decoration: none;
+	cursor: pointer;
+}
+/* 현재위치  */ 
+.location                 	       {COLOR: #DEA3A3 ; font-size : 11px; TEXT-DECORATION: none }
+A.location_link:link               {COLOR: #DEA3A3 ; font-size : 11px; TEXT-DECORATION: none }
+A.location_link:visited            {COLOR: #DEA3A3 ; font-size : 11px; TEXT-DECORATION: none }
+A.location_link:active             {COLOR: #DEA3A3 ; font-size : 11px; TEXT-DECORATION: none }
+A.location_link:hover              {COLOR: #DEA3A3 ; font-size : 11px; TEXT-DECORATION: underline }
+
+
+
+
+
+/* 기타링크 스타일  */ 
+
+A.link_text_btn:link            {font-family:돋움; color: #444444; font-size:11px ;font-weight:bold;letter-spacing: -0.05em ;}
+A.link_text_btn:visited         {font-family:돋움; color: #444444; font-size:11px ;font-weight:bold;letter-spacing: -0.05em ;}
+A.link_text_btn:active          {font-family:돋움; color: #444444; font-size:11px ;font-weight:bold;letter-spacing: -0.05em ;}
+A.link_text_btn:hover           {font-family:돋움; color: #444444; font-size:11px ;font-weight:bold;letter-spacing: -0.05em ;}
+
+A.link_tab_over:link            {font-family: "돋움"; font-size: 12px;color: #ff3300; font-weight:bold; text-decoration:none;}
+A.link_tab_over:visited         {font-family: "돋움"; font-size: 12px;color: #ff3300; font-weight:bold; text-decoration:none;}
+A.link_tab_over:active          {font-family: "돋움"; font-size: 12px;color: #ff3300; font-weight:bold; text-decoration:none;}
+A.link_tab_over:hover           {font-family: "돋움"; font-size: 12px;color: #ff3300; font-weight:bold; text-decoration:none;}
+
+A.link_tab_normal:link          {font-family: "돋움"; font-size: 12px;color: #ffffff; text-decoration:none;}
+A.link_tab_normal:visited         {font-family: "돋움"; font-size: 12px;color: #ffffff; text-decoration:none;}
+A.link_tab_normal:active          {font-family: "돋움"; font-size: 12px;color: #ffffff; text-decoration:none;}
+A.link_tab_normal:hover           {font-family: "돋움"; font-size: 12px;color: #ffffff; text-decoration:none;}
+
+A.link_tab_depth2:link            {font-family: "돋움"; font-size: 11px;color: #12649d;  text-decoration:none;}
+A.link_tab_depth2:visited         {font-family: "돋움"; font-size: 11px;color: #12649d;  text-decoration:none;}
+A.link_tab_depth2:active          {font-family: "돋움"; font-size: 11px;color: #12649d;  text-decoration:none;}
+A.link_tab_depth2:hover           {font-family: "돋움"; font-size: 11px;color: #12649d;  text-decoration:none;}
+
+A.link_dodum11:link            {font-family: "돋움"; font-size: 11px;color: #666666; text-decoration:none;}
+A.link_dodum11:visited         {font-family: "돋움"; font-size: 11px;color: #666666; text-decoration:none;}
+A.link_dodum11:active          {font-family: "돋움"; font-size: 11px;color: #666666; text-decoration:none;}
+A.link_dodum11:hover           {font-family: "돋움"; font-size: 11px;color: #666666; text-decoration:underline;}
+
+A.link_notice:link              {letter-spacing: 0.1em ;color:#69727D; TEXT-DECORATION: none }
+A.link_notice:visited          {letter-spacing: 0.1em ;color:#69727D; TEXT-DECORATION: none }
+A.link_notice:active           {letter-spacing: 0.1em ;color:#69727D; TEXT-DECORATION: none }
+A.link_notice:hover           {letter-spacing: 0.1em ;color:#3373C4; TEXT-DECORATION: underline }
+
+A.link_addfile:link            {font-family: "돋움"; font-size: 12px;color: #608cbc; text-decoration:none;}
+A.link_addfile:visited         {font-family: "돋움"; font-size: 12px;color: #608cbc; text-decoration:none;}
+A.link_addfile:active          {font-family: "돋움"; font-size: 12px;color: #608cbc; text-decoration:none;}
+A.link_addfile:hover           {font-family: "돋움"; font-size: 12px;color: #608cbc; text-decoration:underline;}
+
+A.link_addfile2:link            {font-family: "돋움"; font-size: 12px;color: #ff3300; text-decoration:none;}
+A.link_addfile2:visited         {font-family: "돋움"; font-size: 12px;color: #ff3300; text-decoration:none;}
+A.link_addfile2:active          {font-family: "돋움"; font-size: 12px;color: #ff3300; text-decoration:none;}
+A.link_addfile2:hover           {font-family: "돋움"; font-size: 12px;color: #ff3300; text-decoration:underline;}
+
+
+A.link_name:link            {font-family: "돋움"; font-size: 12px;color: #608cbc;font-weight:bold; text-decoration:none}
+A.link_name:visited         {font-family: "돋움"; font-size: 12px;color: #608cbc;font-weight:bold; text-decoration:none}
+A.link_name:active          {font-family: "돋움"; font-size: 12px;color: #608cbc;font-weight:bold; text-decoration:none}
+A.link_name:hover           {font-family: "돋움"; font-size: 12px;color: #608cbc;font-weight:bold; text-decoration:underline;}
+
+A.link_search1:link            {font-family: "돋움"; font-size: 14px;color: #12649d;font-weight:bold; text-decoration:none}
+A.link_search1:visited         {font-family: "돋움"; font-size: 14px;color: #12649d;font-weight:bold; text-decoration:none}
+A.link_search1:active          {font-family: "돋움"; font-size: 14px;color: #12649d;font-weight:bold; text-decoration:none}
+A.link_search1:hover           {font-family: "돋움"; font-size: 14px;color: #12649d;font-weight:bold; text-decoration:underline;}
+
+A.link_search2:link            {font-family: "돋움"; font-size: 12px;color: #4e4e4e;font-weight:bold; text-decoration:none}
+A.link_search2:visited         {font-family: "돋움"; font-size: 12px;color: #4e4e4e;font-weight:bold; text-decoration:none}
+A.link_search2:active          {font-family: "돋움"; font-size: 12px;color: #4e4e4e;font-weight:bold; text-decoration:none}
+A.link_search2:hover           {font-family: "돋움"; font-size: 12px;color: #4e4e4e;font-weight:bold; text-decoration:underline;}
+
+A.link_search3:link            {font-family: "돋움"; font-size: 12px;color: #4e4e4e;text-decoration:none}
+A.link_search3:visited         {font-family: "돋움"; font-size: 12px;color: #4e4e4e;text-decoration:none}
+A.link_search3:active          {font-family: "돋움"; font-size: 12px;color: #4e4e4e;text-decoration:none}
+A.link_search3:hover           {font-family: "돋움"; font-size: 12px;color: #4e4e4e;text-decoration:underline;}
+
+A.link_12bold:link            {font-size: 12px;color: #333333;font-weight:bold;  text-decoration:none;}
+A.link_12bold:visited         {font-size: 12px;color: #333333;font-weight:bold;  text-decoration:none;}
+A.link_12bold:active          {font-size: 12px;color: #333333;font-weight:bold;  text-decoration:none;}
+A.link_12bold:hover           {font-size: 12px;color: #333333;font-weight:bold;  text-decoration:underline;}
+
+
+
+/* 검색 박스 스타일 */
+.search_box { font-family: "돋움";font-size: 12px;color: #666666;background-color: #f2f2f2;vertical-align: middle;	
+          padding: 1px;border: 1px solid #dddddd; width:120px; height:18px}
+
+
+/* 선택스타일 */
+.select { font-family: "돋움";font-size: 11px;color: #666666;background-color: #FFFFFF;vertical-align: middle;	
+          padding: 1px;border: 1px solid #dddddd; height:18px}
+		  
+.select_box { font-family: "돋움";font-size: 11px;color: #666666;background-color: #FFFFFF;vertical-align: middle;	
+          padding: 1px;border: 1px solid #dddddd; height:18px}
+
+			
+
+/* 게시판*/
+
+li{list-style:square;}
+
+.board_text {font-size:12px; font-family:'돋움'; color:##DEA3A3; font-weight:bold;}
+
+A:link     {font-size: 12px; font-family : 돋움; text-decoration: none; color: #666666; }
+A:visited  {font-size: 12px; font-family : 돋움; text-decoration: none; color: #666666; }
+A:hover    {font-size: 12px; font-family : 돋움; text-decoration: underline; color: #666666; text-decoration: underline; }
+
+
+.formtype_small {font: 8pt Gulim, 돋움;BACKGROUND-COLOR: #ffffff;  border: 1px #a0a0a0 solid; border-color: #a0a0a0 solid}
+.formtype {BACKGROUND-COLOR: #ffffff;  border: 1px #a0a0a0 solid; border-color: #a0a0a0 solid}
+.formtype-yellow {BACKGROUND-COLOR: #FFFBEF;  border: 1px #a0a0a0 solid; border-color: #a0a0a0 solid; text-align: center}
+.formtype-yellow {BACKGROUND-COLOR: #FFFBEF;  border: 1px #a0a0a0 solid; border-color: #a0a0a0 solid}
+.formtype-yellow2 {BACKGROUND-COLOR: #f4f2c6;  border: 1px #a0a0a0 solid; border-color: #FFFFFF solid; text-align: center; font: 10pt Gulim;font-weight:bold;padding-top : 3px;}
+
+.formtype_noline {BACKGROUND-COLOR: #ffffff;  border: 0}
+.formtype-gray {BACKGROUND-COLOR: #EAEAEA;  border: 1px #4B4B4B dotted; border-color: #FFFFFF solid; text-align: center; font: 10pt Gulim;font-weight:bold;padding-top : 3px;}
+.formtype-gray2 {BACKGROUND-COLOR: #FFFFFF;  border: 1px #4B4B4B dotted; border-color: #FFFFFF solid; text-align: center; font: 10pt Gulim;padding-top : 3px;}
+.formtype-list {border: 1px #4B4B4B dotted; border-color: #FFFFFF solid; text-align: center; font: 10pt Gulim;padding-top : 3px;}
+.formtype-line {BACKGROUND-COLOR: #FFFFFF;  border: 1px #4B4B4B dotted; border-color: #FFFFFF solid; text-align: center; font: 10pt Gulim;padding-top : 3px;}
+    
+		

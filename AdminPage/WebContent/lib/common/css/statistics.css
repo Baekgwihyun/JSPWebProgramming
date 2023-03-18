@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+.input_box {
+	margin :0;
+	padding :0;
+	padding-left: 10px;
+	background-color:white;
+}
+.w100 {
+	width: 100px;
+}
+.w80 {
+	width: 80px;
+}
+.chart_area {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border: solid 1px #f7f7f7;
+	width: 100%;
+}
+.chart {
+	width: auto;
+	height: 640px;
+}

@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+// color
+$color-base: #2f3a56;          // 기업 아이덴티티 색
+$color-base-hover: #38466a;    // 기업 아이덴티티 색이 버튼의 배경색일시 hover 배경색
+
+$color-site: #f0f2f6;          // 사이트 전반적으로 사용되는 기본색 ex) 로그인페이지 배경이미지색, input, 테이블 등
+$color-site-hover: #dde1e8;    // 기업 아이덴티티 색이 버튼의 배경색일시 hover 배경색
+
+$color-secondary: #406d96;     // 보조색 ex) 로그인 페이지 id/pw 입력칸 활성화 됐을때의 색, 커스텀 스크롤바 색
+$color-secondary-hover: #406d96;     // 보조색이 버튼의 배경색일시 hover 배경색 ex) 커스텀 스크롤바 이동할때 색
+
+$color-gnb-color: #e9e9f3;     // 좌측 네비게이션(메뉴) 색상
+$color-point: #31b9ff;         // 좌측 네비게이션(메뉴) 현재 페이지 색상 or 강조색
+
+$color-filetree-line: #c5d1f6; // 파일트리 line 색

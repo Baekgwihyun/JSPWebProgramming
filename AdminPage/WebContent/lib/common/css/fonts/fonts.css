@@ -1,0 +1,39 @@
+@charset "utf-8";
+
+/* @import url("NotoSansCJKkr/NotoSansCJKkr.css"); */
+
+@font-face {
+	font-family: 'FontAwesome';
+	src: url('../../lib/fontAwesome/fonts/fa-brands-400.eot');
+	src: url('../../lib/fontAwesome/fonts/fa-brands-400.eot') format('embedded-opentype'),
+		url('../../lib/fontAwesome/fonts/fa-brands-400.woff2') format('woff2'),
+		url('../../lib/fontAwesome/fonts/fa-brands-400.woff') format('woff'),
+		url('../../lib/fontAwesome/fonts/fa-brands-400.ttf') format('truetype'),
+		url('../../lib/fontAwesome/fonts/fa-brands-400.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'FontAwesome';
+	src: url('../../lib/fontAwesome/fonts/fa-regular-400.eot');
+	src: url('../../lib/fontAwesome/fonts/fa-regular-400.eot') format('embedded-opentype'),
+		url('../../lib/fontAwesome/fonts/fa-regular-400.woff2') format('woff2'),
+		url('../../lib/fontAwesome/fonts/fa-regular-400.woff') format('woff'),
+		url('../../lib/fontAwesome/fonts/fa-regular-400.ttf') format('truetype'),
+		url('../../lib/fontAwesome/fonts/fa-regular-400.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'FontAwesome';
+	src: url('../../lib/fontAwesome/fonts/fa-solid-900.eot');
+	src: url('../../lib/fontAwesome/fonts/fa-solid-900.eot') format('embedded-opentype'),
+		url('../../lib/fontAwesome/fonts/fa-solid-900.woff2') format('woff2'),
+		url('../../lib/fontAwesome/fonts/fa-solid-900.woff') format('woff'),
+		url('../../lib/fontAwesome/fonts/fa-solid-900.ttf') format('truetype'),
+		url('../../lib/fontAwesome/fonts/fa-solid-900.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}

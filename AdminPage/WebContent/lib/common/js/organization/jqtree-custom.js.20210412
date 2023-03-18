@@ -1,0 +1,193 @@
+$(function () 
+{
+	var add_node = null;
+	var mod_node = null;
+	var $tree = $("#tree1");
+	
+	$tree.tree({
+		data: rootData,
+		onCreateLi: function(node, $li) {
+			// Add 'icon' span before title
+			var spn = $('<span class="icon"></span>');
+			$li.find('.jqtree-title').before(spn);
+		},
+		autoOpen: false,
+		openedIcon: '-',
+		closedIcon: '+',
+		usecontextmenu: true
+	});
+	
+	$tree.on(
+	    'tree.close',
+	    function(event) {
+	       var node = event.node;
+	    }
+	);
+	
+	$tree.on(
+	    'tree.open',
+	    function(event) {
+	       $userListBody.empty();	
+	       bindUserList(event.node);
+	    }
+	);
+	
+	$tree.on(
+       'tree.click',
+       function(event) 
+       {
+           var node = event.node;
+           
+           if(node.type!=undefined&&node.type=="Dept")
+           {
+           	   $userListBody.empty();
+           	   if(node.children.length==0)
+           	   {
+		           $tree.tree('loadDataFromUrl', '/organization/getChildren/'+node.key, node, function() 
+		           {
+		           		
+		           		if(node.children.length>0)
+		           		{
+					        $tree.tree('openNode', node);
+					        $(node.children).each(function(index, item)
+					        {
+					        	if(item.type=="Dept")
+					        	{
+					        		$(item.element).addClass("jqtree-folder");
+					        		$(item.element).addClass("jqtree-closed");
+					        	}
+					        });
+				        }
+				        else
+				        {
+				        	$(node.element).addClass("jqtree-folder");
+				        }
+				   });
+			   }
+			   else
+			   {
+			   		bindUserList(node);
+			   }
+		   }
+       }
+    );
+
+	$tree.jqTreeContextMenu($("#ContextMenu"), {
+		"addPart": function (node) {
+			add_node = node;
+			$("#deptId").val("");
+			$("#deptName").val("");
+			$("#parentDeptName").val(node.name);
+			$("#parentDeptId").val(node.key);
+			$("#deptOrder").val("");
+			$("#deptType").val("APPEND");
+			
+			var deptStatus = "1";
+			$('input:radio[name=partStatus]:input[value=' + deptStatus + ']').prop("checked", true);
+		},
+		"modPart": function (node) {
+			mod_node = node;
+			$("#deptId").val(node.key);
+			$("#deptName").val(node.model.deptName);
+			$("#parentDeptName").val(node.parent.name);
+			$("#parentDeptId").val(node.model.parentDept);
+			$("#deptOrder").val(node.model.deptOrder);
+			$("#deptType").val(node.model.deptType);
+			
+			var deptStatus = "0";
+			if(node.model.deptStatus=="1")
+				deptStatus = "1";
+			
+			$('input:radio[name=partStatus]:input[value=' + deptStatus + ']').prop("checked", true);
+			
+			$("#edit_label").html("수정");
+		},
+		"delPart": function (node) {
+			delPart(node,$tree);
+		},
+		"addUser": function (node) {
+			add_node = node;
+			$("#userDeptName").val(node.model.deptName);
+			$("#userDeptId").val(node.model.deptId);
+			$("#isChkOverlapId").val("no");
+			$("#userId").val("");
+			$("#userName").val("");
+			$("#posName").val("");
+			$("#userPassword").val("");
+			$("#userPhone").val("");
+			$("#userMobile").val("");
+			$("#userEmail").val("");
+			$("#userOrder").val("");
+			$("#userType").val("APPEND");
+			$("#userJob").val("");
+			
+			var userStatus = "1";
+			$('input:radio[name=userStatus]:input[value=' + userStatus + ']').prop("checked", true);
+			
+			$("#edit_user_label").html("추가");
+		},
+		"modUser": function (node) {
+			mod_node = node;
+			$("#detailUserId").val(node.key);
+			$("#detailUserName").val(node.model.userName);
+			$("#detailPosName").val(node.model.userInfo.posName);
+			$("#detailUserPassword").val(node.model.userPassword);
+			$("#detailUserPhone").val(node.model.userInfo.phone);
+			$("#detailUserMobile").val(node.model.userInfo.mobile);
+			$("#detailUserEmail").val(node.model.userInfo.email);
+			$("#detailUserOrder").val(node.model.userOrder);
+			$("#detailUserType").val(node.model.userInfo.userType);
+			$("#detailUserJob").val(node.model.userInfo.job);
+			$("#detailUserDeptName").val(node.model.userInfo.deptName);
+			$("#detailUserDeptId").val(node.model.deptId);
+			
+			var userStatus = "0";
+			if(node.model.userInfo.userStatus=="1")
+				userStatus = "1";
+			
+			$('input:radio[name=detailUserStatus]:input[value=' + userStatus + ']').prop("checked", true);
+		},
+		"delUser": function (node) {
+			delUser(node,$tree);
+			//$tree.tree("removeNode", node);
+		},
+		"ticker" : function (node) {
+			var tickerNode = node;
+			ticker(tickerNode);
+		},
+		"noticeDeptThis" : function (node) {
+			notice(node,"1");
+		},
+		"noticeDeptDown" : function (node) {
+			notice(node,"2");
+		},
+		"noticeUser" : function (node) {
+			notice(node,"0");
+		}
+	});
+	
+	$(document).on("click", "#btnPartAdd", function() {
+	
+		if(add_node!=null)
+			setPart("addPart", $tree, add_node);
+		else
+			setPart("modPart", $tree, mod_node);
+	});
+	
+	$(document).on("click", "#btnUserAdd", function() {
+		
+		setUser("addUser", $tree, add_node);
+	});
+	
+	$(document).on("click", "#btnUserMod", function() {
+		setUser("modUser", $tree, mod_node);
+	});
+	
+	$(document).on("click", "#btnTickerAdd", function() {
+		setTicker();
+	});
+	
+	$(document).on("click", ".btnSendNoti", function() {
+		setNotice();
+	});
+});
