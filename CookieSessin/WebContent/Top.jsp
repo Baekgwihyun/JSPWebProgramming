@@ -44,7 +44,6 @@
 			<td width="100" align="center">침낭</td>
 			<td width="100" align="center">테이블</td>
 			<td width="100" align="center"><%=id%>님</td>
-
 			</td>
 		</tr>
 	</table>

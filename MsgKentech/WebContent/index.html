@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+<title>조직관리</title>
+<th:block th:include="include/lib"></th:block>
+<link rel="stylesheet" href="lib/common/css/classgroup.css">
+<link rel="stylesheet" href="lib/common/css/style.css">
+<link rel="stylesheet" href="lib/common/css/statistics.css">
+<script type="text/javascript" src="lib/common/js/login/login.js"></script>
+<script type="text/javascript">
+document.getElementById("adminId").focus();
+
+function goLogin()
+{
+	var form = document.MainForm;
+	
+	if(document.getElementById("adminId").value == "")
+	{
+		alert("아이디를 입력하세요.");
+		document.getElementById("adminId").focus();
+		return
+	}
+	else if(checkStr("adminId",document.getElementById("adminId").value) == false) 
+	{ 
+		document.getElementById("adminId").focus();
+		return 
+	}
+	else if(document.getElementById("adminPwd").value == "")
+	{
+		alert("비밀번호를 입력하세요.");
+		document.getElementById("adminPwd").focus();
+		return
+	}
+	else if(checkStr("adminPwd",document.getElementById("adminPwd").value) == false) 
+	{ 
+		document.getElementById("adminPwd").focus();
+		return 
+	}
+	else
+	{
+		form.method = "post";
+		form.action = "login.jsp";
+		form.submit();
+	}
+}
+function checkStr(name,str)
+{
+	var countnum = 0;
+	var checkstr = "script,alert,/script,cookie,document";
+	checkstr = checkstr.split(",");
+	
+	str = str.toLowerCase();
+
+	for(var i=0; i < checkstr.length; i++)
+	{
+		if(str.match(checkstr[i]) != null)
+		{
+			countnum++;
+		}
+	}
+	
+	if(countnum != 0)
+	{
+		alert("허용되지 않는 문자열이 있습니다.");
+		document.getElementById(name).value = "";
+		return false
+	}
+}
+function checkEnter(){
+
+	var form = document.MainForm;
+	var code = window.event.keyCode; 
+	if(code ==13)
+	{
+		goLogin();
+	}else
+	{
+		return
+	}
+}
+function onFocus()
+{
+	if(document.getElementById("adminId").value == "")
+	{
+		document.getElementById("adminId").focus();
+	}
+	else
+	{
+		document.getElementById("adminPwd").focus();
+	}
+	
+}
+function init() {
+	document.getElementById("adminId").focus();
+}
+</script>
+</head>
+<body onLoad="init();">
+	<section id="wrap">
+		<section class="wrap_layout" style="height:100%;">
+			<div class="login_wrap">
+				<div class="login__inner">
+					<h1 class="login__inner__logo">
+						<img src="lib/common/img/logo.png" alt="Logo" />
+					</h1>
+					<p>
+						Administrator center
+					</p>
+<form name="MainForm">						
+					<div class="login_form mt50">
+						<div class="login_form__input">
+							<input type="text" placeholder="아이디를 입력하세요." id="adminId" name="adminId" value=""/>
+							<label>User ID</label>
+							<i class="fas fa-user"></i>
+						</div>
+					</div>
+					<div class="login_form mt50">
+						<div class="login_form__input">
+							<input type="password" placeholder="비밀번호를 입력하세요." id="adminPwd" name="adminPwd" value="" onKeyDown="javascript:checkEnter()"/>
+							<label>Password</label>
+							<i class="fas fa-key"></i>
+						</div>
+					</div>
+					<div class="login_btn mt50">
+						<!-- <button type="button" id="btnLogin" onclick="location.href='organization/index.jsp'">Login</button> -->
+						<button type="button" id="btnLogin" onclick="javascript:goLogin();">Login</button>
+					</div>
+</form>						
+				</div>
+			</div>
+		</section>
+	</section>
+</body>
+</html>
