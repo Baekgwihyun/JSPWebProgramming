@@ -1,4 +1,4 @@
-package kr.co.ultari.admin.controller;
+package kr.co.ultari.authentication;
 
 import java.io.IOException;
 import java.util.Properties;

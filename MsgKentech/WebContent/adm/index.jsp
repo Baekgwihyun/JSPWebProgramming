@@ -1,6 +1,3 @@
-<%@page import="kr.co.ultari.admin.controller.AuthenticationService"%>
-<%@page import="kr.co.ultari.admin.controller.PropertyManager"%>
-<%@page import="kr.co.ultari.admin.controller.AdminProcessManager"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ page import="java.util.*" %>
@@ -8,14 +5,8 @@
 <%@ page import="kr.co.ultari.common.StringTool" %>
 <%
 	request.setCharacterEncoding("utf-8");
-PropertyManager propertyManager = new PropertyManager();
-AdminProcessManager AdminProcessManager = new AdminProcessManager(propertyManager);
 
 String adminId = (String) request.getSession().getAttribute("adminId");
-
-ArrayList<String> result = AdminProcessManager.MobileConfCtr(); 
-
-ArrayList<String> diskresult = AdminProcessManager.DiskConfCtr();
 
 if ( adminId == null )
 {
@@ -32,12 +23,11 @@ if ( adminId == null )
 }
 
 %>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
-	<title>프로세스관리</title>
+	<title>조직관리</title>
 	
 	<!-- lib -->
 	<link rel="shortcut icon" th:href="../lib/common/img/favicon.ico">
@@ -110,11 +100,10 @@ function goSave()
 
 				<section id="container">
 					<header class="sub_head">
-						<h2><i class="ico_tit sub05"></i> <span>관리자</span></h2>
+						<h2><i class="ico_tit sub05"></i> <span>관리자 패스워드 변경</span></h2>
 					</header>
 					<div class="conts_inner">
 						<article class="conts_inner__article over-area">
-
 							<form name="MainForm" class="conts_inner__article__inner jumbo_box">
 							<input type="hidden" name="seqList" id="seqList" value="">
 								<div id="searchArea" class="conts_body">
@@ -142,15 +131,22 @@ function goSave()
 									</div>
 								</div>
 							</form>
-							
-							
-							<!-- 컨피그 설정 -->
-							<form name="confFrom" class="conts_inner__article__inner jumbo_box">
+						</article>
+					</div>
+				</section>
+				<!-- 첨부파일 저장기간 -->
+				<section id="container">
+					<header class="sub_head">
+						<h2><i class="ico_tit sub05"></i> <span>첨부파일/미수신 저장기간 변경</span></h2>
+					</header>
+					<div class="conts_inner">
+						<article class="conts_inner__article over-area">
+							<form name="MainForm" class="conts_inner__article__inner jumbo_box">
 							<input type="hidden" name="seqList" id="seqList" value="">
 								<div id="searchArea" class="conts_body">
 									<div class="toptable">
 										<table>
-											<button class="btn_type bg_base" type="submit" id="configSave" ><span>저장</span></button>&nbsp;
+											<button class="btn_type bg_base" type="button" id="userSave" onClick="javascript:goSave();"><span>저장</span></button>&nbsp;
 										</table>
 										<br>
 									</div>
@@ -163,70 +159,20 @@ function goSave()
 											</colgroup>
 											<thead>
 												<tr>
-													<th>미수신대화,쪽지 보관기간</th>
-													<th><input type="text" name="chatconfig" id="chatconfig" value="" style="width:100%;ime-mode:disabled;"></th>
+													<th>첨부파일/미수신 저장기간 변경</th>
+													<th>
+													<input type="text" name="DiskCleanFile" id="DiskCleanFile" value="" style="width:100%;ime-mode:disabled;">
+													<input type="text" name="DiskCleanChat" id="DiskCleanChat" value="" style="width:100%;ime-mode:disabled;">
+													</th>
 													<th></th>
 												</tr>
 											</thead>
 										</table>
 									</div>
-									<div class="depttable">
-										<table>
-											<colgroup>
-												<col style="width: 200px"/>
-												<col style="width: 400px"/>
-												<col style="width:"/>
-											</colgroup>
-											<thead>
-												<tr>
-													<th>첨부파일 저장 주기</th>
-													<th><input type="text" name="chatconfig" id="chatconfig" value="<%=%>" style="width:100%;ime-mode:disabled;"></th>
-													<th></th>
-												</tr>
-											</thead>
-										</table>
-									</div>
-									<div class="depttable">
-										<table>
-											<colgroup>
-												<col style="width: 200px"/>
-												<col style="width: 400px"/>
-												<col style="width:"/>
-											</colgroup>
-											<thead>
-												<tr>
-													<th>첨부파일 전송 용량 제한</th>
-													<th><input type="text" name="chatconfig" id="chatconfig" value="<%=result.get(0)%>" style="width:100%;ime-mode:disabled;"></th>
-													<th></th>
-												</tr>
-											</thead>
-										</table>
-									</div>
-									<div class="depttable">
-										<table>
-											<colgroup>
-												<col style="width: 200px"/>
-												<col style="width: 400px"/>
-												<col style="width:"/>
-											</colgroup>
-											<thead>
-												<tr>
-													<th>프로필 변경가능</th>
-													<th><input type="text" name="chatconfig" id="chatconfig" value="<%=result.get(1)%>" style="width:100%;ime-mode:disabled;"></th>
-													<th></th>
-												</tr>
-											</thead>
-										</table>
-									</div>
-									
 								</div>
 							</form>
-						
-							
 						</article>
 					</div>
 				</section>
-				
- 
- </body>
+</body>
 </html>

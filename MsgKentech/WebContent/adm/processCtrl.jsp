@@ -1,5 +1,4 @@
 
-<%@page import="kr.co.ultari.admin.controller.AdminProcessManager"%>
 <%@page import="java.io.IOException"%>
 <%@page import="java.io.SequenceInputStream"%>
 <%@page import="java.io.InputStreamReader"%>
@@ -30,18 +29,28 @@
 
 <title>프로세스 관리</title>
 
+
+
 </head>
 <body>
-<% 
-//String cmd = "ls -al";
-String[] cmd = {"/bin/sh","-c","netstat -na | grep 18000 | grep EST | wc -l"};
+<%
+request.setCharacterEncoding("UTF-8");
+
+String cmd = "";
 int lineCount = 0;
 String line="";
 Runtime rt = Runtime.getRuntime();
 Process ps = null;
-String result = "";
-try{
 
+
+
+cmd = (String) request.getParameter("cmd");
+System.out.println(cmd);
+
+
+
+try{
+	
   ps = rt.exec(cmd);
 
   BufferedReader br =
@@ -49,10 +58,12 @@ try{
         new InputStreamReader(
         new SequenceInputStream(ps.getInputStream(), ps.getErrorStream())));
 
-
+        
 
   while((line = br.readLine()) != null){
- result = line;
+%>
+<%=line%><br> <!-- 결과 화면에 뿌리기... -->
+<%
   }
   br.close();
 
@@ -61,30 +72,28 @@ try{
 }catch(Exception e){
   e.printStackTrace();
 }
-
-String shRtn ="";
-
-//AdminProcessManager admp = new AdminProcessManager();
-%>
-        <h2>현재 접속자: <%=result%><h2>
-	<div class="conts_inner">
-						<article class="conts_inner__article over-area">
-							<form name="MainForm" class="conts_inner__article__inner jumbo_box" action="processCtrl">
-							<input type="hidden" name="seqList" id="seqList" value="">
-								<div id="searchArea" class="conts_body">
-									<div class="toptable">
-										<table>
-											<button class="btn_type bg_base" type="button" id="processStop" value="processStop"><span>프로세스종료</span></button>&nbsp;
-											<button class="btn_type bg_base" type="button" id="processStart" value="processStart"><span>프로세스시작</span></button>&nbsp;
-										</table>
-										<br>
-									</div>
-									<div class="depttable">
-									</div>
-								</div>
-							</form>
-						</article>
-					</div>
 	
+%>
+	<h2>프로세스관리 페이지</h2>
+
+	<div class="conts_inner">
+		<article class="conts_inner__article over-area">
+		<form name="MainForm" class="conts_inner__article__inner jumbo_box"
+			action="processCtrl.jsp" method="post">
+			<div id="searchArea" class="conts_body">
+				<div class="toptable">
+					<div id="contents">
+						<button type="submit" name="cmd" value="ProcessStop" id="stop">
+							프로세스종료</button>
+						<br>
+						<button type="submit" name="cmd" value="ProcessStart" id="start">
+							프로세스 실행</button>
+
+					</div>
+				</div>
+				</div>
+				</form>
+			</article>
+			</div>
 </body>
 </html>

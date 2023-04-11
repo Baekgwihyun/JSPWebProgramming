@@ -344,7 +344,7 @@ function getDeptNm()
 						<!-- // 좌측 영역 -->
 
 						<!-- 우측 영역 -->
-						 <iframe width="100%"  height="100%" frameborder="0" scrolling="auto" name="processCtrl" id="processCtrl" src="../adm/processCtrl.jsp"></iframe>
+						<!-- <iframe width="100%"  height="100%" frameborder="0" scrolling="auto" name="processCtrl" id="processCtrl" src="../adm/processCtrl.jsp"></iframe> -->
 						<!--  <iframe width="100%"  height="100%" frameborder="0" scrolling="auto" name="list" id="list" src="usrlist.jsp"></iframe>
 						-->
 						<!-- // 우측 영역 -->

@@ -10,8 +10,7 @@
 <body>
 <%
 
-    //String command = "/home/msger.stop.sh";  // <---- 실행할 쉘명령어
-    String command ="";
+    String command = "/home/msger.stop.sh";  // <---- 실행할 쉘명령어
     int lineCount = 0;
     String line="";
 
@@ -19,7 +18,16 @@
     Process ps = null;
 
     try{
+    	if(command.equals("ProcessStop"))
+    	{
+    		ps = rt.exec(command);	
+    	}
+    	if(command.equals("ProcessStart"))
+    	{
+    		ps = rt.exec(command);	
+    	}
     	
+
       BufferedReader br =
             new BufferedReader(
             new InputStreamReader(

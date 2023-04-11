@@ -1,8 +1,6 @@
 <%@page import="kr.co.ultari.process.AdminMgr"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-    <%@page import="kr.co.ultari.admin.controller.PropertyManager"%>
-<%@page import="kr.co.ultari.admin.controller.AuthenticationService"%>
 <%@ page import="java.util.*" %>
 <%@ page import="java.text.*" %>
 <%@ page import="java.io.*" %>
@@ -12,16 +10,9 @@
 	String adminId = (String) request.getSession().getAttribute("adminId");
 
 	String passwd = StringTool.NullTrim(request.getParameter("pwd"));
-	
-	PropertyManager propertyManager = new PropertyManager();
-	AuthenticationService authenticationService = new AuthenticationService(propertyManager);
-	
-	boolean mgrPwMod = authenticationService.changePwd(passwd);
-	System.out.println("mgrPwMod" + mgrPwMod);
-	
 	//String encPwd = StringTool.getSHA256(passwd);
 	
-/* 	Properties prot = new Properties();
+	Properties prot = new Properties();
 	String protPath = "/config/Config.properties";
 	prot.load(getClass().getResourceAsStream(protPath));
 	//DBController mo = new DBController();
@@ -40,7 +31,7 @@
 	
 	//String encPwd = StringTool.getSHA256(passwd);
 	System.out.println("mgrpw="+ mgrPw);
- */	
+	
 	
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">

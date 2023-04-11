@@ -1,5 +1,5 @@
-<%@page import="kr.co.ultari.admin.controller.PropertyManager"%>
-<%@page import="kr.co.ultari.admin.controller.AuthenticationService"%>
+<%@page import="kr.co.ultari.authentication.PropertyManager"%>
+<%@page import="kr.co.ultari.authentication.AuthenticationService"%>
 <%@page import="kr.co.ultari.process.AdminMgr"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
@@ -8,7 +8,6 @@
 <%@ page import="java.io.*" %>
 <%@ page import="kr.co.ultari.common.StringTool" %>
 <%@ page import="kr.co.ultari.db.DBController" %>
-
 <%
 	PropertyManager propertyManager = new PropertyManager();
 	AuthenticationService authenticationService = new AuthenticationService(propertyManager);
