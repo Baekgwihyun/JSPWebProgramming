@@ -131,22 +131,13 @@ function goSave()
 									</div>
 								</div>
 							</form>
-						</article>
-					</div>
-				</section>
-				<!-- 첨부파일 저장기간 -->
-				<section id="container">
-					<header class="sub_head">
-						<h2><i class="ico_tit sub05"></i> <span>첨부파일/미수신 저장기간 변경</span></h2>
-					</header>
-					<div class="conts_inner">
-						<article class="conts_inner__article over-area">
-							<form name="MainForm" class="conts_inner__article__inner jumbo_box">
+							
+							<form name="FileCtrlForm" class="conts_inner__article__inner jumbo_box">
 							<input type="hidden" name="seqList" id="seqList" value="">
 								<div id="searchArea" class="conts_body">
 									<div class="toptable">
 										<table>
-											<button class="btn_type bg_base" type="button" id="userSave" onClick="javascript:goSave();"><span>저장</span></button>&nbsp;
+											<button class="btn_type bg_base" type="button" id="configSave" onClick=""><span>저장</span></button>&nbsp;
 										</table>
 										<br>
 									</div>
@@ -159,11 +150,64 @@ function goSave()
 											</colgroup>
 											<thead>
 												<tr>
-													<th>첨부파일/미수신 저장기간 변경</th>
-													<th>
-													<input type="text" name="DiskCleanFile" id="DiskCleanFile" value="" style="width:100%;ime-mode:disabled;">
-													<input type="text" name="DiskCleanChat" id="DiskCleanChat" value="" style="width:100%;ime-mode:disabled;">
-													</th>
+													<th>첨부파일 다운로드 기간</th>
+													<th><input type="text" name="pwd" id="pwd" value="" style="width:100%;ime-mode:disabled;"></th>
+													<th></th>
+												</tr>
+											</thead>
+										</table>
+										<table>
+											<colgroup>
+												<col style="width: 200px"/>
+												<col style="width: 400px"/>
+												<col style="width:"/>
+											</colgroup>
+											<thead>
+												<tr>
+													<th>첨부파일 전송 용량</th>
+													<th><input type="text" name="pwd" id="pwd" value="" style="width:100%;ime-mode:disabled;"></th>
+													<th></th>
+												</tr>
+											</thead>
+										</table>
+										<table>
+											<colgroup>
+												<col style="width: 200px"/>
+												<col style="width: 400px"/>
+												<col style="width:"/>
+											</colgroup>
+											<thead>
+												<tr>
+													<th>미수신 대화, 쪽지 보관 기간</th>
+													<th><input type="text" name="pwd" id="pwd" value="" style="width:100%;ime-mode:disabled;"></th>
+													<th></th>
+												</tr>
+											</thead>
+										</table>
+										<table>
+											<colgroup>
+												<col style="width: 200px"/>
+												<col style="width: 400px"/>
+												<col style="width:"/>
+											</colgroup>
+											<thead>
+												<tr>
+													<th>프로필 변경</th>
+													<th><input type="text" name="pwd" id="pwd" value="" style="width:100%;ime-mode:disabled;"></th>
+													<th></th>
+												</tr>
+											</thead>
+										</table>
+										<table>
+											<colgroup>
+												<col style="width: 200px"/>
+												<col style="width: 400px"/>
+												<col style="width:"/>
+											</colgroup>
+											<thead>
+												<tr>
+													<th>관리자 로그인 패스워드</th>
+													<th><input type="text" name="pwd" id="pwd" value="" style="width:100%;ime-mode:disabled;"></th>
 													<th></th>
 												</tr>
 											</thead>
@@ -171,8 +215,12 @@ function goSave()
 									</div>
 								</div>
 							</form>
+							
+							
 						</article>
 					</div>
 				</section>
+				<!-- 첨부파일 저장기간 -->
+				
 </body>
 </html>

@@ -28,72 +28,128 @@
 
 
 <title>프로세스 관리</title>
+<script type="text/javascript">
+function httpGetAsync(theUrl, callback)
+{
+	
+	
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.onreadystatechange = function() {
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200){
+        	 callback(xmlHttp.responseText);
+        	 
+        }           
+    }
+    xmlHttp.open("GET", theUrl, true); // true for asynchronous
+    xmlHttp.send(null);
+}
+function myCallBack(response){
+        alert(response);
+}
 
+
+function test() {
+	let processStop ="processStop" ; 
+	alert(processStop);
+	
+}
+</script>
 
 
 </head>
 <body>
-<%
-request.setCharacterEncoding("UTF-8");
+<%-- 	<%
+	request.setCharacterEncoding("UTF-8");
+	//String cmd = "ls -al";
+	String[] cmd = {"/bin/sh","-c","netstat -na | grep 18000 | grep EST | wc -l"};
+	int lineCount = 0;
+	String line="";
+	Runtime rt = Runtime.getRuntime();
+	Process ps = null;
+	String result = "";
+	try{
 
-String cmd = "";
-int lineCount = 0;
-String line="";
-Runtime rt = Runtime.getRuntime();
-Process ps = null;
+	  ps = rt.exec(cmd);
+
+	  BufferedReader br =
+	        new BufferedReader(
+	        new InputStreamReader(
+	        new SequenceInputStream(ps.getInputStream(), ps.getErrorStream())));
 
 
 
-cmd = (String) request.getParameter("cmd");
-System.out.println(cmd);
+	  while((line = br.readLine()) != null){
+	 result = line;
+	  }
+	  br.close();
 
-
-
-try{
+	}catch(IOException ie){
+	  ie.printStackTrace();
+	}catch(Exception e){
+	  e.printStackTrace();
+	}
+	%> --%>
 	
-  ps = rt.exec(cmd);
-
-  BufferedReader br =
-        new BufferedReader(
-        new InputStreamReader(
-        new SequenceInputStream(ps.getInputStream(), ps.getErrorStream())));
-
-        
-
-  while((line = br.readLine()) != null){
-%>
-<%=line%><br> <!-- 결과 화면에 뿌리기... -->
-<%
-  }
-  br.close();
-
-}catch(IOException ie){
-  ie.printStackTrace();
-}catch(Exception e){
-  e.printStackTrace();
-}
 	
-%>
-	<h2>프로세스관리 페이지</h2>
+	<%
+    String path = "/home/msger/stop.sh";
+    String bashCommand[] = {"ls", "-al"}; // bash 명령어
+    String scriptCommand[] = {"sh", path}; //shell script 실행
 
+    int lineCount = 0;
+    String line="";
+
+    ProcessBuilder builder = new ProcessBuilder(bashCommand);
+    Process childProcess = null;
+
+    try{
+        childProcess = builder.start();
+
+      BufferedReader br =
+            new BufferedReader(
+                    new InputStreamReader(
+                          new SequenceInputStream(childProcess.getInputStream(), childProcess.getErrorStream())));
+
+      while((line = br.readLine()) != null){
+%>
+    <%=line%><br>
+<%
+      }
+      br.close();
+
+   }catch(IOException ie){
+      ie.printStackTrace();
+   }catch(Exception e){
+      e.printStackTrace();
+   }
+%>
+	
+	
+	
+	<%-- <h2>현재 접속자 수: <%=result%></h2> --%>
+					
 	<div class="conts_inner">
 		<article class="conts_inner__article over-area">
-		<form name="MainForm" class="conts_inner__article__inner jumbo_box"
-			action="processCtrl.jsp" method="post">
+		<form name="MainForm" class="conts_inner__article__inner jumbo_box" action="processCtrl.jsp" method="post">
 			<div id="searchArea" class="conts_body">
 				<div class="toptable">
 					<div id="contents">
-						<button type="submit" name="cmd" value="ProcessStop" id="stop">
-							프로세스종료</button>
-						<br>
-						<button type="submit" name="cmd" value="ProcessStart" id="start">
-							프로세스 실행</button>
+						<!-- <button class="btn_type bg_base" type="button" id="processStop" onclick="httpGetAsync('/home/msger/stop.sh', myCallBack)">
+							<span>프로세스 종료</span>
+						</button> -->
+						
+						<button class="btn_type bg_base" type="button" id="processStop" onclick="httpGetAsync('./processCtrl.jsp', myCallBack) ">
+							<span>프로세스 종료</span>
+						</button>
+						<button class="btn_type bg_base" type="button" id="processStart" onclick="httpGetAsync('/home/msger/start.sh', myCallBack)">
+							<span>프로세스 실행</span>
+						</button>
 
 					</div>
 				</div>
-				</div>
-				</form>
-			</article>
 			</div>
+		</form>
+		</article>
+	</div>
 </body>
 </html>
