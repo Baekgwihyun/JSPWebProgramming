@@ -54,11 +54,9 @@ function test() {
 	
 }
 </script>
-
-
 </head>
 <body>
-<%-- 	<%
+<%
 	request.setCharacterEncoding("UTF-8");
 	//String cmd = "ls -al";
 	String[] cmd = {"/bin/sh","-c","netstat -na | grep 18000 | grep EST | wc -l"};
@@ -88,10 +86,11 @@ function test() {
 	}catch(Exception e){
 	  e.printStackTrace();
 	}
-	%> --%>
+	
+	%> 
 	
 	
-	<%
+<%-- 	<%
     String path = "/home/msger/stop.sh";
     String bashCommand[] = {"ls", "-al"}; // bash 명령어
     String scriptCommand[] = {"sh", path}; //shell script 실행
@@ -122,11 +121,11 @@ function test() {
    }catch(Exception e){
       e.printStackTrace();
    }
-%>
+%> --%>
 	
 	
 	
-	<%-- <h2>현재 접속자 수: <%=result%></h2> --%>
+	<h2>현재 접속자 수: <%=result%></h2>
 					
 	<div class="conts_inner">
 		<article class="conts_inner__article over-area">
@@ -144,7 +143,15 @@ function test() {
 						<button class="btn_type bg_base" type="button" id="processStart" onclick="httpGetAsync('/home/msger/start.sh', myCallBack)">
 							<span>프로세스 실행</span>
 						</button>
-
+						<br>
+						<br>
+						&#32;
+						<button class="btn_type bg_base" type="button" id="processStart" onclick="httpGetAsync('/home/msger/start.sh', myCallBack)">
+							<span>서비스 재 시작</span>
+						</button>
+						<button class="btn_type bg_base" type="button" id="processStart" onclick="httpGetAsync('/home/msger/start.sh', myCallBack)">
+							<span>조직도 동기화</span>
+						</button>
 					</div>
 				</div>
 			</div>

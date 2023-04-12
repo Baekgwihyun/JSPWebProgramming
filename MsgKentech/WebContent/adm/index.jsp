@@ -1,3 +1,6 @@
+<%@page import="kr.co.ultari.authentication.AuthenticationService"%>
+<%@page import="kr.co.ultari.authentication.PropertyManager"%>
+<%@page import="kr.co.ultari.authentication.AdminConfigController"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ page import="java.util.*" %>
@@ -5,8 +8,14 @@
 <%@ page import="kr.co.ultari.common.StringTool" %>
 <%
 	request.setCharacterEncoding("utf-8");
-
 String adminId = (String) request.getSession().getAttribute("adminId");
+
+PropertyManager propertyManager = new PropertyManager();
+AuthenticationService authenticationService = new AuthenticationService(propertyManager);
+ArrayList<String> result = authenticationService.mobileConfig();
+List<String> diskresult = authenticationService.diskConfig();
+
+
 
 if ( adminId == null )
 {
@@ -53,6 +62,8 @@ if ( adminId == null )
 	
 	<script type="text/javascript" src="../common/js/WinUtil.js"></script>
 <script language="javascript" >
+
+
 function goSave()
 {
 	var form = document.MainForm;
@@ -109,7 +120,7 @@ function goSave()
 								<div id="searchArea" class="conts_body">
 									<div class="toptable">
 										<table>
-											<button class="btn_type bg_base" type="button" id="userSave" onClick="javascript:goSave();"><span>저장</span></button>&nbsp;
+											<button class="btn_type bg_base" type="button" id="userSave" onClick=""><span>저장</span></button>&nbsp;
 										</table>
 										<br>
 									</div>
@@ -142,6 +153,20 @@ function goSave()
 										<br>
 									</div>
 									<div class="depttable">
+									<table>
+											<colgroup>
+												<col style="width: 200px"/>
+												<col style="width: 400px"/>
+												<col style="width:"/>
+											</colgroup>
+											<thead>
+												<tr>
+													<th>미수신 대화, 쪽지 보관 기간</th>
+													<th><input type="text" name="chatDate" id="chatDate" value="<%= Integer.toString(Integer.parseInt(diskresult.get(0))/ 24)%> " style="width:100%;ime-mode:disabled;"></th>
+													<th></th>
+												</tr>
+											</thead>
+										</table>
 										<table>
 											<colgroup>
 												<col style="width: 200px"/>
@@ -151,7 +176,7 @@ function goSave()
 											<thead>
 												<tr>
 													<th>첨부파일 다운로드 기간</th>
-													<th><input type="text" name="pwd" id="pwd" value="" style="width:100%;ime-mode:disabled;"></th>
+													<th><input type="text" name="fileDownDate" id="fileDownDate" value="<%=Integer.toString(Integer.parseInt(diskresult.get(1)) / 24) %>" style="width:100%;ime-mode:disabled;"></th>
 													<th></th>
 												</tr>
 											</thead>
@@ -165,25 +190,12 @@ function goSave()
 											<thead>
 												<tr>
 													<th>첨부파일 전송 용량</th>
-													<th><input type="text" name="pwd" id="pwd" value="" style="width:100%;ime-mode:disabled;"></th>
+													<th><input type="text" name="maxFileSize" id="maxFileSize" value="<%=result.get(0)%>" style="width:100%;ime-mode:disabled;">MB</th>
 													<th></th>
 												</tr>
 											</thead>
 										</table>
-										<table>
-											<colgroup>
-												<col style="width: 200px"/>
-												<col style="width: 400px"/>
-												<col style="width:"/>
-											</colgroup>
-											<thead>
-												<tr>
-													<th>미수신 대화, 쪽지 보관 기간</th>
-													<th><input type="text" name="pwd" id="pwd" value="" style="width:100%;ime-mode:disabled;"></th>
-													<th></th>
-												</tr>
-											</thead>
-										</table>
+										
 										<table>
 											<colgroup>
 												<col style="width: 200px"/>
@@ -193,21 +205,7 @@ function goSave()
 											<thead>
 												<tr>
 													<th>프로필 변경</th>
-													<th><input type="text" name="pwd" id="pwd" value="" style="width:100%;ime-mode:disabled;"></th>
-													<th></th>
-												</tr>
-											</thead>
-										</table>
-										<table>
-											<colgroup>
-												<col style="width: 200px"/>
-												<col style="width: 400px"/>
-												<col style="width:"/>
-											</colgroup>
-											<thead>
-												<tr>
-													<th>관리자 로그인 패스워드</th>
-													<th><input type="text" name="pwd" id="pwd" value="" style="width:100%;ime-mode:disabled;"></th>
+													<th><input type="text" name="profileYN" id="profileYN" value="<%=result.get(1)%>" style="width:100%;ime-mode:disabled;">Y&N</th>
 													<th></th>
 												</tr>
 											</thead>
@@ -215,8 +213,6 @@ function goSave()
 									</div>
 								</div>
 							</form>
-							
-							
 						</article>
 					</div>
 				</section>
