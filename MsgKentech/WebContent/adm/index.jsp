@@ -12,10 +12,8 @@ String adminId = (String) request.getSession().getAttribute("adminId");
 
 PropertyManager propertyManager = new PropertyManager();
 AuthenticationService authenticationService = new AuthenticationService(propertyManager);
-ArrayList<String> result = authenticationService.mobileConfig();
-List<String> diskresult = authenticationService.diskConfig();
-
-
+ArrayList<String> result = authenticationService.getMobileConfig();
+List<String> diskresult = authenticationService.getDiskConfig(); 
 
 if ( adminId == null )
 {
@@ -120,7 +118,7 @@ function goSave()
 								<div id="searchArea" class="conts_body">
 									<div class="toptable">
 										<table>
-											<button class="btn_type bg_base" type="button" id="userSave" onClick=""><span>저장</span></button>&nbsp;
+											<button class="btn_type bg_base" type="button" id="userSave" onClick="goSave();"><span>저장</span></button>&nbsp;
 										</table>
 										<br>
 									</div>
@@ -143,12 +141,13 @@ function goSave()
 								</div>
 							</form>
 							
-							<form name="FileCtrlForm" class="conts_inner__article__inner jumbo_box">
+							<form name="FileCtrlForm" class="conts_inner__article__inner jumbo_box" action="adminConfigProc.jsp">
 							<input type="hidden" name="seqList" id="seqList" value="">
 								<div id="searchArea" class="conts_body">
 									<div class="toptable">
 										<table>
-											<button class="btn_type bg_base" type="button" id="configSave" onClick=""><span>저장</span></button>&nbsp;
+											<!-- <button class="btn_type bg_base" type="button" id="configSave" onClick=""><span>저장</span></button>&nbsp; -->
+											<button class="btn_type bg_base" type="submit" id="configSave" onClick=""><span>저장</span></button>&nbsp;
 										</table>
 										<br>
 									</div>

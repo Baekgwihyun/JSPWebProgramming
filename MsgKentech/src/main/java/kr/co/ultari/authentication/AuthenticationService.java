@@ -14,15 +14,15 @@ public class AuthenticationService {
 	public AuthenticationService(PropertyManager propertyManager) {
 		this.propertyManager = propertyManager;
 	}
-	private String getAdminId() throws IOException {
+	public String getAdminId() throws IOException {
 		return propertyManager.getValue("ADMINID").trim();
 	}
 
-	private String getAdminPwd() throws IOException {
+	public String getAdminPwd() throws IOException {
 		return propertyManager.getValue("ADMINPWD").trim();
 	}
 
-	private String getMobilePath() throws IOException {
+	public String getMobilePath() throws IOException {
 		return propertyManager.getValue("ADMINMOBILEPATH").trim();
 	}
 
@@ -36,7 +36,30 @@ public class AuthenticationService {
 //	}
 //	
 
-	public ArrayList<String> mobileConfig() throws IOException {
+	
+	
+	public boolean modMobileConfig(String maxFileSize, String proFileYN) throws IOException {
+		
+		
+		
+		
+		return (Boolean) null;
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public ArrayList<String> getMobileConfig() throws IOException {
 
 		String path = getMobilePath();
 		FileReader cf = null;
@@ -89,7 +112,7 @@ public class AuthenticationService {
 
 	}
 	  
-	public  List<String> diskConfig() throws IOException{
+	public  List<String> getDiskConfig() throws IOException{
 
 		// String path = getDiskPath();
 		String path = "D:\\5.Java_workspase\\PC\\AtMessenger7_Server_212\\AtMessenger7_Server\\DiskCleanService\\Config.dat";

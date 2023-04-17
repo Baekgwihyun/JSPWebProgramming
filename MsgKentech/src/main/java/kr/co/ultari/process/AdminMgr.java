@@ -26,7 +26,7 @@ public class AdminMgr
     	{
 			prot.load(getClass().getResourceAsStream(sProtPath));
 			
-			admPath = StringTool.NullTrim(prot.getProperty("ADMINPWDPATH").trim());
+			admPath = StringTool.NullTrim(prot.getProperty("ADMINPWD").trim());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

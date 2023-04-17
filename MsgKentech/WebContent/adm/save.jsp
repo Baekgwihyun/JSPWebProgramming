@@ -15,22 +15,13 @@
 	Properties prot = new Properties();
 	String protPath = "/config/Config.properties";
 	prot.load(getClass().getResourceAsStream(protPath));
-	//DBController mo = new DBController();
 	
-	//String query = prot.getProperty("PWDMODQUERY").trim();
-	//String[] val = {encPwd,adminId};
-	
-	
-	
-	//boolean ok = mo.execute(query,val);
 	
 	AdminMgr amgr = new AdminMgr(); // AdminMgr 객체 선언
 	String mgrPw = amgr.getAdmPwd();
 	
 	boolean mgrPwMod = amgr.setAdmPwd(passwd);
-	
-	//String encPwd = StringTool.getSHA256(passwd);
-	System.out.println("mgrpw="+ mgrPw);
+	//System.out.println("mgrpw="+ mgrPw);
 	
 	
 %>
