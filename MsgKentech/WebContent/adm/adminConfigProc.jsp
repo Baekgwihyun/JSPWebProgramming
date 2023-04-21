@@ -68,6 +68,8 @@ function goSave()
 	var fileDownDate = document.getElementById("fileDownDate").value;
 	var maxFileSize = document.getElementById("maxFileSize").value;
 	
+	
+	
 	if(fileDownDate && maxFileSize == "")
 	{
 		alert("변경할 정보를 입력하세요.");

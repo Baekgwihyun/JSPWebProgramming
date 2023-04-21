@@ -15,6 +15,15 @@ AuthenticationService authenticationService = new AuthenticationService(property
 ArrayList<String> result = authenticationService.getMobileConfig();
 List<String> diskresult = authenticationService.getDiskConfig(); 
 
+
+String maxFileSize = request.getParameter("maxFileSize");
+String proFileYN = request.getParameter("proFileYN");
+authenticationService.modMobileConfig(maxFileSize, proFileYN);
+
+
+
+
+
 if ( adminId == null )
 {
 %>
@@ -78,6 +87,11 @@ function goSave()
 		form.submit();
 	}
 }
+
+
+
+
+
 </script>
 </head>
 <body>
@@ -140,8 +154,8 @@ function goSave()
 									</div>
 								</div>
 							</form>
-							
-							<form name="FileCtrlForm" class="conts_inner__article__inner jumbo_box" action="adminConfigProc.jsp">
+							<!-- 컨피그 관리-->
+							<form name="adminConfigProc" class="conts_inner__article__inner jumbo_box">
 							<input type="hidden" name="seqList" id="seqList" value="">
 								<div id="searchArea" class="conts_body">
 									<div class="toptable">

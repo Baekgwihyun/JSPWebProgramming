@@ -1,8 +1,14 @@
 package kr.co.ultari.authentication;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,12 +44,73 @@ public class AuthenticationService {
 
 	
 	
-	public boolean modMobileConfig(String maxFileSize, String proFileYN) throws IOException {
+	public void modMobileConfig(String maxFileSize, String proFileYN) throws IOException {
+		System.out.println("여기 찍혀?");
+		System.out.println(maxFileSize);
+		System.out.println(proFileYN);
 		
+		String path = getMobilePath();
+		File OrgFile = null;
+		File TmpFile = null;
+		FileInputStream fi = null;
+		FileOutputStream fo = null;
+		BufferedReader br = null;
+		BufferedWriter bw = null;
+		String line = null;
+		String leftStr = null;
+		String rightStr = null;
 		
+		OrgFile = new File(path);
 		
-		
-		return (Boolean) null;
+		if(OrgFile.exists())
+		{
+			TmpFile = new File(path+".tmp");
+			try
+			{
+				fi = new FileInputStream(OrgFile);
+				br = new BufferedReader(new InputStreamReader(fi,"UTF-8"));
+				
+				fo = new FileOutputStream(TmpFile);
+				bw = new BufferedWriter(new OutputStreamWriter(fo,"UTF-8"));
+				
+				while((line = br.readLine()) != null)
+				{
+					if(line.indexOf(":") > 0)
+					{
+						leftStr = line.substring(0,line.indexOf(":"));
+						rightStr = line.substring(line.indexOf(":") +1,line.length());
+						
+						if(leftStr.equals("4CLIENT_MAX_FILE"))
+						{
+							line = leftStr + ":" + maxFileSize;
+						}
+						if(leftStr.equals("4CLIENT_USE_EDIT_PICTURE"))
+						{
+							line = leftStr + ":" + proFileYN;
+						}
+					}
+					
+					//System.out.println(line);
+					bw.write(line+"\r\n");
+				    bw.flush();
+				}
+				//rtn = true;
+			}
+			catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					br.close();
+					bw = null;
+				} catch (Exception ee) {
+				}
+				try {
+					br.close();
+					br = null;
+				} catch (Exception ee) {
+				}
+			}
+		}
 		
 	}
 	
